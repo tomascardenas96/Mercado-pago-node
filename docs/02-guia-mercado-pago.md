@@ -2,9 +2,13 @@
 
 Mercado Pago ofrece distintos tipos de integracion para procesar pagos en tu proyecto, en esta guia nos centraremos en Checkout Pro (mas simple que Checkout API pero menos flexible).
 
+<br>
+
 ## 🛠️ Requisitos previos
 
 - Tener una cuenta en Mercado Pago (Misma que Mercado Libre) [Mercado Pago Developers](https://www.mercadopago.com.ar/developers/es)
+
+<br>
 
 # 📁 Desde la pagina de Mercado Pago Developers
 
@@ -34,6 +38,8 @@ Mercado Pago ofrece distintos tipos de integracion para procesar pagos en tu pro
 - Copiar el Access Token y guardarlo en algun lugar seguro (Este access token es para hacer pruebas).
 - Guardar tambien la Public Key (será utilizada en el Frontend).
 
+<br>
+
 # 📁 En tu proyecto Node.js
 
 ## Instala las dependencias necesarias:
@@ -43,6 +49,8 @@ npm install mercadopago dotenv
 ```
 
 (El sdk de mercadopago y dotenv sirve para leer las variables de entorno)
+
+<br>
 
 ## Crear un archivo .env en la raiz del proeyecto y agregalo al archivo .gitignore (para que no se suban las credenciales a github).
 
@@ -55,12 +63,16 @@ TUNNEL_HOST=LOCALHOST_HTTPS_CON_NGROK_ACTIVO
 
 Modifica estos datos con la informacion anteriormente guardada.
 
+<br>
+
 ## Agregar el archivo ngrok.exe
 
 - Ingresar a la web de [ngrok](https://ngrok.com/)
 - Registrarse e iniciar sesion
 - Descargar archivo ngrok.exe y agregarlo en la raiz de tu proyecto
 - Abrir la terminal en la ruta raiz de tu proyecto y ejecutar el comando de configuracion que te da la pagina de ngrok (ngrok config add-authtoken <TU_TOKEN>)
+
+<br>
 
 ## Creamos las 2 rutas necesarias (para crear la preferencia y para recibir el webhook - notificaciones enviadas por MercadoPago con el estado de la transaccion)
 
@@ -173,6 +185,8 @@ app.listen(process.env.PORT, () => {
 
 NOTA: (Este ejemplo se simplifico guardando todo en el archivo principal, seria recomendable crear distintos archivos para cada tarea - ruta, servicio, controlador).
 
+<br>
+
 ## Crear un tunnel HTTPS de tu localhost (http => https)
 
 - Abrir una terminal cmd (algunas terminales como git bash no funcionan) desde la ruta raiz.
@@ -191,11 +205,15 @@ https://9b12-190-123-123-1.ngrok.io
 - Dejar abierta la terminal donde se ejecuta Ngrok.
 - NOTA: La URL generada es dinamica, por lo tanto cada vez que corras el comando te dara una nueva URL (y deberas agregarla nuevamente a la variable de entorno).
 
+<br>
+
 ## Correr el proyecto en una nueva terminal
 
 ```bash
 npm run dev
 ```
+
+<br>
 
 ## Realizar pruebas
 
@@ -214,6 +232,8 @@ npm run dev
 - Recibís un init_point (URL para pagar).
 - Abrí esa URL en el navegador y usá datos de prueba para completar el pago (abrir cuenta de prueba de comprador anteriormente generada en Mercado Pago).
 - NOTA: Podes usar tarjetas de prueba para simular los distintos estados de la transaccion - [Tarjetas de prueba](https://www.mercadopago.com.ar/developers/es/docs/your-integrations/test/cards)
+
+<br>
 
 ## Verificar la consola de Node.js para confirmar que se reciben los webhooks (notificacion con estado de la compra).
 
